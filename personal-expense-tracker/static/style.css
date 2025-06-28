@@ -1,0 +1,30 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 30px;
+}
+
+.table {
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+th {
+    background-color: #343a40 !important;
+    color: #fff !important;
+}
+
+.alert {
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 900px;
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}All Expenses{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">📒 All Expenses</h2>
+
+{% if expenses %}
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for date, category, amount, description in expenses %}
+        <tr>
+            <td>{{ date }}</td>
+            <td>{{ category }}</td>
+            <td>₹{{ '%.2f'|format(amount) }}</td>
+            <td>{{ description }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info text-center">No expenses found.</div>
+{% endif %}
+{% endblock %}

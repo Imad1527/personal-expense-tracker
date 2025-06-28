@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='images/money bg.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 128, 0, 0.15);
+    backdrop-filter: blur(6px);
+  }
+
+  .form-label {
+    font-weight: 500;
+  }
+
+  .btn-money {
+    background-color: #28a745;
+    border: none;
+  }
+
+  .btn-money:hover {
+    background-color: #218838;
+  }
+
+  .login-heading {
+    font-weight: 600;
+    color: #2d6a4f;
+  }
+
+  .login-sub {
+    font-size: 0.95rem;
+    color: #5c5c5c;
+  }
+</style>
+
+<div class="d-flex align-items-center justify-content-center" style="min-height: 85vh;">
+  <div class="card login-card p-4 px-4" style="width: 100%; max-width: 440px;">
+    <div class="text-center mb-4">
+      <h2 class="login-heading mb-1">💸 Login</h2>
+      <p class="login-sub">Track every rupee. Build smarter habits.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="mb-3">
+        <label class="form-label">📧 Email</label>
+        <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">🔐 Password</label>
+        <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-money text-white w-100 fw-semibold">Log In</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <small>First time here?
+        <a href="{{ url_for('signup') }}" class="text-success fw-semibold">Create an account</a>
+      </small>
+    </div>
+  </div>
+</div>
+{% endblock %}

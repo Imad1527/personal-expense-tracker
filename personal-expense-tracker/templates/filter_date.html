@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Filter by Date{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">📅 Filter by Date Range</h2>
+
+<form method="POST" action="{{ url_for('filter_date') }}">
+    <div class="row">
+        <div class="col">
+            <input type="date" name="start" class="form-control" required>
+        </div>
+        <div class="col">
+            <input type="date" name="end" class="form-control" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Filter</button>
+</form>
+
+{% if expenses is not none %}
+    <hr>
+    {% if expenses %}
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr><th>Date</th><th>Category</th><th>Amount</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+            {% for e in expenses %}
+                <tr>
+                    <td>{{ e[0] }}</td>
+                    <td>{{ e[1] }}</td>
+                    <td>₹{{ '%.2f'|format(e[2]) }}</td>
+                    <td>{{ e[3] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info mt-4">No expenses in this date range.</div>
+    {% endif %}
+{% endif %}
+{% endblock %}

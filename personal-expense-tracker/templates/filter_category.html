@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Filter by Category{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">📂 Filter by Category</h2>
+
+<form method="POST" action="{{ url_for('filter_category') }}">
+    <div class="mb-3">
+        <input type="text" class="form-control" name="category" placeholder="Enter category (e.g., Food)">
+    </div>
+    <button type="submit" class="btn btn-success">Filter</button>
+</form>
+
+{% if expenses is not none %}
+    <hr>
+    {% if expenses %}
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr><th>Date</th><th>Category</th><th>Amount</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+            {% for e in expenses %}
+                <tr>
+                    <td>{{ e[0] }}</td>
+                    <td>{{ e[1] }}</td>
+                    <td>₹{{ '%.2f'|format(e[2]) }}</td>
+                    <td>{{ e[3] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info mt-4">No expenses found for that category.</div>
+    {% endif %}
+{% endif %}
+{% endblock %}
